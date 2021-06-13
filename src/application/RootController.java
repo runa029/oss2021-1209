@@ -33,6 +33,8 @@ public class RootController implements Initializable{
 	@FXML private ListView<String> folderList;
 	@FXML private TilePane imageList;
 	
+	@FXML private Button btnCap; // 캡처버튼
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -68,14 +70,32 @@ public class RootController implements Initializable{
 		}
 	});
 	}
+	//-----------------------------------------------------------------------
+	//임의 추가
 	
+btnCapture.setOnAction(new EventHandler<ActionEvent>() {
+	@Override
+	public void handle(ActionEvent event) {
+		try {
+			handleBtnCaptureAction(event);
+		} catch (Exception e) {
+			
+		}
+	} 
+   });
+
+
+
+//-------------------------------------------------------------------------------
+
+
 	private Stage primaryStage;
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
 	
 	public void handleBtnHelpAction(ActionEvent e) throws Exception {
-		Stage dialogExit = new Stage(StageStyle.UTILITY);
+		Stage dialog = new Stage(StageStyle.UTILITY);
 		dialogExit.initModality(Modality.WINDOW_MODAL);
 		dialogExit.initOwner(primaryStage);
 		dialogExit.setTitle("도움말");
@@ -86,6 +106,16 @@ public class RootController implements Initializable{
 		dialogExit.setResizable(false);
 		dialogExit.show();
 	}
+	
+	//임의추가
+	public void handleBtnCaptureAction(ActionEvent e) throws Exception {
+		Capture2.ReadWriteTime();
+		Capture2.HandleUp();
+	}
+
+	
+	
+	
 	
 	public void handleBtnShareAction(ActionEvent e) {
 		//공유 팝업 띄우기
