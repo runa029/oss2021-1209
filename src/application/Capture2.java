@@ -18,7 +18,7 @@ import com.sun.jna.platform.win32.WinDef.HWND;
 import com.sun.jna.win32.*;
 
 
-
+//화면 캡처 프로그램
 public class Capture2 {
 	
 	static String[] WinBuffer = new String[10];
