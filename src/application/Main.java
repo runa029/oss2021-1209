@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-
+//clone test
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
