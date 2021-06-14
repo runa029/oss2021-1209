@@ -65,7 +65,7 @@ public class Capture2 {
     }
     
 	
-    public static void HandleUp() {
+    public static void HandleUp()  {
     	HWND hwnd0 = User32.INSTANCE.GetForegroundWindow();
         User32.INSTANCE.ShowWindow(hwnd0,6);
        // 캡처프로그램 창을 숨긴다.
@@ -87,16 +87,20 @@ public class Capture2 {
             rect = Capture2.getRect(windowName);
             //윈도우 제목의 핸들을 찾아서 좌표를 구한다.
             System.out.printf("현재 창은  \"%s\" 이며, 코너 좌표는 %s입니다\n",windowName, Arrays.toString(rect));
-          
+           
+            
+            
             Shot3(rect, windowName);
             //캡처 & 저장
             System.out.println("저장 완료");
+            
            
         } catch (Capture2.WindowNotFoundException e) {
             e.printStackTrace();
         } catch (Capture2.GetWindowRectException e) {
             e.printStackTrace();
         }
+       
         User32.INSTANCE.ShowWindow(hwnd0,9);
         //숨겼던 캡처프로그램 창을 복구시킨다.
     	
@@ -113,9 +117,10 @@ public class Capture2 {
         }//활성화 윈도우가 없으면 호출한 곳으로 windownotfoundException 에러를 보낸다.
 
         int[] rect = {0, 0, 0, 0};
-        int result = User32.INSTANCE.GetWindowRect(hwnd, rect);
+        User32.INSTANCE.GetWindowRect(hwnd, rect);
         //창 핸들의 현재 윈도우 좌표를 rect에 저장하고 길이를 result에 저장
-        if (result == 0) {
+        int sum = rect[0] + rect[1] + rect[2] + rect[3];
+        if (sum == 0) {
             throw new GetWindowRectException(windowName);
         }//값이 0나오면 오류처리한다.
         return rect;
@@ -139,6 +144,14 @@ public class Capture2 {
         }
     }//위 두 메서드는 오류 처리
 
+    @SuppressWarnings("serial")
+    public static class IllegalArgumentException extends Exception {
+        public IllegalArgumentException() {
+            super(String.format("Window is null & Rectangle is null!"));
+        }
+    }// Rectangle width and height must be > 0 처리
+
+    
     //저장
     public static void Shot3(int[] A,String windowName) {
 		String saveFilePath = "D:\\Dtest\\";
