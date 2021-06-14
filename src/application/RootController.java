@@ -32,9 +32,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.control.TextField;
+//import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.DirectoryChooser;
+
 
 public class RootController implements Initializable{
 	@FXML private Button btnHelp;
@@ -59,6 +61,12 @@ public class RootController implements Initializable{
 	
 	File defFolPath;
 	
+	File selectedDirectory;
+	   File selected1Directory;
+	   File selected2Directory;
+	   File selected3Directory;
+	   File selected4Directory ;
+	   File selected5Directory;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -117,15 +125,35 @@ public class RootController implements Initializable{
 	 
 	 
 	 
-	 
-	 
-	 
 	}
 	
 	private Stage primaryStage;
 	public void setPrimaryStage(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 	}
+	
+	
+	public void handleBtnFoliAction(ActionEvent e) throws Exception {
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		selected1Directory = directoryChooser.showDialog(null);//selected1Directory는 이미지가 저장되는 파일 변수, 어느 폴더의 이미지인지 구별 가능하도록 이름을 지음
+	    File[] imageFiles = selected1Directory.listFiles(new ImageFileFilter());
+	    for (File file : imageFiles) {
+	         try {
+	               ImageView imageView = new ImageView();
+	               imageView.setPreserveRatio(true);
+	               imageView.setFitHeight(150);
+	               imageView.setFitWidth(80);
+	               Image image = new Image(new FileInputStream(file));
+	               imageView.setImage(image);
+	               imageList.getChildren().add(imageView);
+	              } catch (FileNotFoundException ex) {             
+	                    ex.printStackTrace();
+	                }
+	         }
+	}
+	
+	
+	
 	
 	public void handleBtnHelpAction(ActionEvent e) throws Exception {
 		Stage dialogExit = new Stage(StageStyle.UTILITY);
@@ -376,7 +404,7 @@ public class RootController implements Initializable{
 	}
   }
 }
-
+/*
 class ImageFileFilter implements FileFilter{
 	private final String[] vaildFileExtension = new String[] {"jpg", "jpeg", "png", "gif"};
 	@Override
@@ -388,4 +416,18 @@ class ImageFileFilter implements FileFilter{
 		}
 		return false;
 	}
+}*/
+
+class ImageFileFilter implements FileFilter {
+    
+    private final String[] validFileExtension = new String[] {"jpg", "jpeg", "png"}; 
+    @Override
+    public boolean accept(File pathname) {
+        for (String extension : validFileExtension) {
+            if (pathname.getName().toLowerCase().endsWith(extension)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -12,9 +12,7 @@ import java.util.Arrays;
 import java.text.SimpleDateFormat;
 
 import javax.imageio.ImageIO;
-//import com.sun.jna.Pointer;
 import com.sun.jna.Native;
-//import com.sun.jna.*;
 import com.sun.jna.platform.win32.WinDef.HWND;
 import com.sun.jna.win32.*;
 
@@ -52,6 +50,9 @@ public class Capture2 {
     public static void main(String[] args) {    
     	ReadWriteTime();
     	HandleUp();
+    	
+		//RootController.handleBt2nFoliAction();
+		
     	   	
     }
     
