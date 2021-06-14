@@ -140,7 +140,7 @@ public class Capture2 {
     @SuppressWarnings("serial")
     public static class GetWindowRectException extends Exception {
         public GetWindowRectException(String windowName) {
-            super("Window Rect not found for " + windowName);
+            super("Window Rect not found for " + windowName + "or because it's null!");
         }
     }//위 두 메서드는 오류 처리
 
