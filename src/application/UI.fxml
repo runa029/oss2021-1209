@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic></Button>
             <TilePane layoutX="222.0" layoutY="104.0" prefHeight="839.0" prefWidth="1122.0" />
-            <Button fx:id="btnCap" layoutX="907.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleBtnCapture" text="ScreenShot">
+            <Button fx:id="btnCap" layoutX="907.0" layoutY="18.0" mnemonicParsing="false" text="ScreenShot">
                <font>
                   <Font size="18.0" />
                </font>

@@ -39,6 +39,8 @@ public class RootController implements Initializable{
 	@FXML private TilePane imageList;
 	
 	
+	@FXML private Button btnCap; // 캡처버튼
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -69,7 +71,20 @@ public class RootController implements Initializable{
 			
 		}
 	});
+	
+	
+	
+	
+	//임의 추가--------------------------------------------	
+	 btnCap.setOnAction(event->{
+			try {
+				handleBtnCaptureAction(event);
+			} catch (Exception e) {
+				
+			}
+		});
 	}
+	//--------------------------------------------------
 	
 	private Stage primaryStage;
 	public void setPrimaryStage(Stage primaryStage) {
@@ -262,6 +277,12 @@ public class RootController implements Initializable{
 		dialogOption.show();
 	}
 	
+	
+	//임의추가
+			public void handleBtnCaptureAction(ActionEvent e) throws Exception {
+				Capture2.ReadWriteTime();
+				Capture2.HandleUp();
+			}
 
 	
 }
