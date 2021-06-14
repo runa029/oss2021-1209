@@ -93,14 +93,17 @@ public class Capture2 {
             Shot3(rect, windowName);
             //캡처 & 저장
             System.out.println("저장 완료");
-            
+            Thread.sleep(500);
            
         } catch (Capture2.WindowNotFoundException e) {
             e.printStackTrace();
         } catch (Capture2.GetWindowRectException e) {
             e.printStackTrace();
-        }
-       
+        } catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
         User32.INSTANCE.ShowWindow(hwnd0,9);
         //숨겼던 캡처프로그램 창을 복구시킨다.
     	
