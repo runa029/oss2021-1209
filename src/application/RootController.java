@@ -75,6 +75,14 @@ public class RootController implements Initializable{
 	   });
 	
 	// btnShare.setOnAction(event->handleBtnShareAction(event));
+	btnShare.setOnAction(event->{
+        try {
+           handleBtnShareAction(event);
+        } catch (Exception e) {
+           
+        }
+     });
+	
 	 btnExit.setOnAction(event->{
 		try {
 			handleBtnExitAction(event);
@@ -133,17 +141,17 @@ public class RootController implements Initializable{
 	}
 	
 	public void handleBtnShareAction(ActionEvent e) throws Exception {
-		Stage dialogExit = new Stage(StageStyle.UTILITY);
-		dialogExit.initModality(Modality.WINDOW_MODAL);
-		dialogExit.initOwner(primaryStage);
-		dialogExit.setTitle("공유");
-		
-		Parent parentHelp = FXMLLoader.load(getClass().getResource("Share_dialog.fxml"));
-		Scene scene = new Scene(parentHelp);
-		dialogExit.setScene(scene);
-		dialogExit.setResizable(false);
-		dialogExit.show();
-	}
+	      Stage dialogExit = new Stage(StageStyle.UTILITY);
+	      dialogExit.initModality(Modality.WINDOW_MODAL);
+	      dialogExit.initOwner(primaryStage);
+	      dialogExit.setTitle("공유");
+	      
+	      Parent parentHelp = FXMLLoader.load(getClass().getResource("Share_dialog.fxml"));
+	      Scene scene = new Scene(parentHelp);
+	      dialogExit.setScene(scene);
+	      dialogExit.setResizable(false);
+	      dialogExit.show();
+	   }
 		//공유 팝업 띄우기
 	
 	public void handleBtnExitAction(ActionEvent e) throws Exception {
