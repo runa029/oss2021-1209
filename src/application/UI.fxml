@@ -9,11 +9,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="997.0" prefWidth="1358.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RootController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="967.0" prefWidth="1358.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RootController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="950.0" prefWidth="1360.0" style="-fx-background-color: linear-gradient(to bottom, #87F8DE,#87EAF8);">
          <children>
-            <ListView fx:id="folderList" layoutX="10.0" layoutY="10.0" prefHeight="947.0" prefWidth="291.0" />
             <Button fx:id="btnHelp" layoutX="1043.0" layoutY="2.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="74.0" style="-fx-background-color: #87F8DE;" text="?">
                <font>
                   <Font size="35.0" />
@@ -25,7 +24,7 @@
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Downloads/share_icon_131496.png" />
+                        <Image url="@공유.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
@@ -33,13 +32,15 @@
                <font>
                   <Font size="37.0" />
                </font></Button>
-            <Button fx:id="btnOption" layoutX="1206.0" layoutY="2.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="74.0" style="-fx-background-color: #87F8DE;" />
-            <ImageView fitHeight="50.0" fitWidth="53.0" layoutX="1218.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../Downloads/pngegg.png" />
-               </image>
-            </ImageView>
-            <TilePane fx:id="imageList" layoutX="315.0" layoutY="73.0" prefHeight="883.0" prefWidth="1031.0" />
+            <Button fx:id="btnOption" layoutX="1206.0" layoutY="2.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="74.0" style="-fx-background-color: #87F8DE;">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@설정.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <TilePane layoutX="222.0" layoutY="104.0" prefHeight="839.0" prefWidth="1122.0" />
          </children></AnchorPane>
   </content>
 </ScrollPane>

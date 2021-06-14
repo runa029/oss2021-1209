@@ -12,8 +12,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.TilePane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,17 +35,14 @@ public class RootController implements Initializable{
 	@FXML private Button btnShare;
 	@FXML private Button btnExit;
 	@FXML private Button btnOption;
-	@FXML private ListView<String> folderList;
+
 	@FXML private TilePane imageList;
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-	folderList.setItems(FXCollections.observableArrayList(
-			//새로 생기는 폴더들의 이름을 여기서 추가할 수 있을끼?
-			));
-
-		
+    
 	btnHelp.setOnAction(new EventHandler<ActionEvent>() {
 		@Override
 		public void handle(ActionEvent event) {
@@ -113,9 +115,146 @@ public class RootController implements Initializable{
 		Stage dialogOption = new Stage(StageStyle.UTILITY);
 		dialogOption.initModality(Modality.WINDOW_MODAL);
 		dialogOption.initOwner(primaryStage);
-		dialogOption.setTitle("옵션");
+		dialogOption.setTitle(" ");
 		
 		Parent parentOption = FXMLLoader.load(getClass().getResource("Option_dialog.fxml"));
+		Button btnOkOp = (Button) parentOption.lookup("#btnOkOp");
+		Button btnCanOp = (Button) parentOption.lookup("#btnCanOp");
+		ComboBox extenBox = (ComboBox) parentOption.lookup("#extenBox");
+		ComboBox sortType1 = (ComboBox) parentOption.lookup("#sortType1");
+		ComboBox sortType2 = (ComboBox) parentOption.lookup("#sortType2");
+		Button btnOkSa = (Button) parentOption.lookup("#btnOkSa");
+		Button btnCanSa = (Button) parentOption.lookup("#btnCanSa");
+		Button btnProg1 = (Button) parentOption.lookup("#btnProg1");
+		Button btnProg2 = (Button) parentOption.lookup("#btnProg2");
+		Button btnProg3 = (Button) parentOption.lookup("#btnProg3");
+		Button btnProg4 = (Button) parentOption.lookup("#btnProg4");
+		Button btnProg5 = (Button) parentOption.lookup("#btnProg5");
+		Button btnLink1 = (Button) parentOption.lookup("#btnLink1");
+		Button btnLink2 = (Button) parentOption.lookup("#btnLink2");
+		Button btnLink3 = (Button) parentOption.lookup("#btnLink3");
+		Button btnLink4 = (Button) parentOption.lookup("#btnLink4");
+		Button btnLink5 = (Button) parentOption.lookup("#btnLink5");
+		Button btnDef = (Button) parentOption.lookup("#btnDef");
+		TextField defaultLink = (TextField) parentOption.lookup("#defaultLink");
+		TextField selectProg1 = (TextField) parentOption.lookup("#selectProg1");
+		TextField selectProg2 = (TextField) parentOption.lookup("#selectProg2");
+		TextField selectProg3 = (TextField) parentOption.lookup("#selectProg3");
+		TextField selectProg4 = (TextField) parentOption.lookup("#selectProg4");
+		TextField selectProg5 = (TextField) parentOption.lookup("#selectProg5");
+		TextField selectLink1 = (TextField) parentOption.lookup("#selectLink1");
+		TextField selectLink2 = (TextField) parentOption.lookup("#selectLink2");
+		TextField selectLink3 = (TextField) parentOption.lookup("#selectLink3");
+		TextField selectLink4 = (TextField) parentOption.lookup("#selectLink4");
+		TextField selectLink5 = (TextField) parentOption.lookup("#selectLink5");
+		String folName1;
+		String folName2;
+		String folName3;
+		String folName4;
+		String folName5;
+		
+		btnProg1.setOnAction(event->{
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.getExtensionFilters().addAll(
+					new ExtensionFilter("실행 파일", "*.exe"));
+			File prog1 = fileChooser.showOpenDialog(primaryStage);
+			String prog1Name = prog1.getName();
+			selectProg1.setText(prog1Name);
+		});
+		btnProg2.setOnAction(event->{
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.getExtensionFilters().addAll(
+					new ExtensionFilter("실행 파일", "*.exe"));
+			File prog2 = fileChooser.showOpenDialog(primaryStage);
+			String prog2Name = prog2.getName();
+			selectProg2.setText(prog2Name);
+			
+		});
+		btnProg3.setOnAction(event->{
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.getExtensionFilters().addAll(
+					new ExtensionFilter("실행 파일", "*.exe"));
+			File prog3 = fileChooser.showOpenDialog(primaryStage);
+			String prog3Name = prog3.getName();
+			selectProg3.setText(prog3Name);
+		});
+		btnProg4.setOnAction(event->{
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.getExtensionFilters().addAll(
+					new ExtensionFilter("실행 파일", "*.exe"));
+			File prog4 = fileChooser.showOpenDialog(primaryStage);
+			String prog4Name = prog4.getName();
+			selectProg4.setText(prog4Name);
+			
+		});
+		btnProg5.setOnAction(event->{
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.getExtensionFilters().addAll(
+					new ExtensionFilter("실행 파일", "*.exe"));
+			File prog5 = fileChooser.showOpenDialog(primaryStage);
+			String prog5Name = prog5.getName();
+			selectProg5.setText(prog5Name);
+		});
+		btnLink1.setOnAction(event->{
+			DirectoryChooser directoryChooser = new DirectoryChooser();
+			File selLink1 = directoryChooser.showDialog(primaryStage);
+			String selLink1Dir = selLink1.getPath();
+			String selLink1Name = selLink1.getName();
+			selectLink1.setText(selLink1Dir);
+		});
+		btnLink2.setOnAction(event->{
+			DirectoryChooser directoryChooser = new DirectoryChooser();
+			File selLink2 = directoryChooser.showDialog(primaryStage);
+			String selLink2Dir = selLink2.getPath();
+			selectLink2.setText(selLink2Dir);
+		});
+		btnLink3.setOnAction(event->{
+			DirectoryChooser directoryChooser = new DirectoryChooser();
+			File selLink3 = directoryChooser.showDialog(primaryStage);
+			String selLink3Dir = selLink3.getPath();
+			selectLink3.setText(selLink3Dir);
+		});
+		btnLink4.setOnAction(event->{
+			DirectoryChooser directoryChooser = new DirectoryChooser();
+			File selLink4 = directoryChooser.showDialog(primaryStage);
+			String selLink4Dir = selLink4.getPath();
+			selectLink4.setText(selLink4Dir);
+		});
+		btnLink5.setOnAction(event->{
+			DirectoryChooser directoryChooser = new DirectoryChooser();
+			File selLink5 = directoryChooser.showDialog(primaryStage);
+			String selLink5Dir = selLink5.getPath();
+			selectLink5.setText(selLink5Dir);
+		});
+		btnDef.setOnAction(event->{
+			DirectoryChooser directoryChooser = new DirectoryChooser();
+			File defLink = directoryChooser.showDialog(primaryStage);
+			String defLinkDir  = defLink.getPath();
+			defaultLink.setText(defLinkDir);
+		});
+		
+        btnOkOp.setOnAction(event->{
+			
+		});
+		btnCanOp.setOnAction(event->dialogOption.close());
+		btnOkSa.setOnAction(event->{
+			if (selectProg1 != null) {
+				
+			}
+			if (selectLink2 != null) {
+				
+			}
+			if (selectLink3 != null) {
+				
+			}
+			if (selectProg4 != null) {
+				
+			}
+			if (selectProg5 != null) {
+				
+			}
+		});
+		btnCanSa.setOnAction(event->dialogOption.close());
 		
 		Scene scene = new Scene(parentOption);
 		dialogOption.setScene(scene);
