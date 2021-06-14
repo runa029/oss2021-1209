@@ -55,6 +55,8 @@ public class RootController implements Initializable{
 	@FXML private Label selFol4Name;
 	@FXML private Label selFol5Name;
 	
+	@FXML private Button btnCap; // Ä¸Ã³¹öÆ°
+	
 	File defFolPath;
 	
 	
@@ -72,7 +74,7 @@ public class RootController implements Initializable{
 		} 
 	   });
 	
-	 btnShare.setOnAction(event->handleBtnShareAction(event));
+	// btnShare.setOnAction(event->handleBtnShareAction(event));
 	 btnExit.setOnAction(event->{
 		try {
 			handleBtnExitAction(event);
@@ -94,6 +96,22 @@ public class RootController implements Initializable{
 			 
 		 }
 	 });
+	 
+		// Ä¸Ã³ ±â´É-------------------------------------------	
+	 btnCap.setOnAction(event->{
+			try {
+				handleBtnCaptureAction(event);
+			} catch (Exception e) {
+				
+			}
+		});
+	 	 
+	 
+	 
+	 
+	 
+	 
+	 
 	}
 	
 	private Stage primaryStage;
@@ -144,6 +162,11 @@ public class RootController implements Initializable{
 		dialogExit.setScene(scene);
 		dialogExit.setResizable(false);
 		dialogExit.show();
+	}
+	
+	public void handleBtnCaptureAction(ActionEvent e) throws Exception {
+		Capture2.ReadWriteTime();
+		Capture2.HandleUp();
 	}
 	
 	public void handleBtnOptionAction(ActionEvent e) throws Exception {
