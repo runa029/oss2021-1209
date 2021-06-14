@@ -3,6 +3,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -46,6 +47,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <TextField fx:id="tfCap" layoutX="703.0" layoutY="24.0" />
          </children></AnchorPane>
   </content>
 </ScrollPane>

@@ -154,7 +154,7 @@ public class Capture2 {
     
     //¿˙¿Â
     public static void Shot3(int[] A,String windowName) {
-		String saveFilePath = "D:\\Dtest\\";
+		String saveFilePath = "C:\\SelectedCapture\\";
         String saveFileName = "ScreenShotTest";
         String saveFileExtension = "png";
         

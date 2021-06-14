@@ -28,6 +28,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+
 
 
 public class RootController implements Initializable{
@@ -40,6 +44,8 @@ public class RootController implements Initializable{
 	
 	
 	@FXML private Button btnCap; // 캡처버튼
+	@FXML private TextField tfCap; // 캡처 단축키
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -83,8 +89,34 @@ public class RootController implements Initializable{
 				
 			}
 		});
-	}
+	 
+	 tfCap.setOnKeyPressed(new EventHandler<KeyEvent>() {
+         @Override
+         public void handle(KeyEvent event) {
+             System.out.println("[KeyPressed]");
+             System.out.println("tf1.KeyCode: " + event.getCode());
+             System.out.println("tf1.Text: " + event.getText());
+             System.out.println("tf1.Character: " + event.getCharacter());
+             
+             KeyCode keyCode = event.getCode();
+             if (keyCode.equals(KeyCode.F9)) {
+            	 try {
+            		 handleKeyCaptureAction(event);
+            	 } catch (Exception e) {
+ 					
+ 				}
+             }
+             }
+     });
+	 
+	 
+	 
+	 
+	 
 	//--------------------------------------------------
+	}
+
+	
 	
 	private Stage primaryStage;
 	public void setPrimaryStage(Stage primaryStage) {
@@ -278,8 +310,11 @@ public class RootController implements Initializable{
 	}
 	
 	
-	//임의추가
 			public void handleBtnCaptureAction(ActionEvent e) throws Exception {
+				Capture2.ReadWriteTime();
+				Capture2.HandleUp();
+			}
+			public void handleKeyCaptureAction(KeyEvent event) throws Exception {
 				Capture2.ReadWriteTime();
 				Capture2.HandleUp();
 			}
