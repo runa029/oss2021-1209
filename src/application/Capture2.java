@@ -219,23 +219,7 @@ public class Capture2 {
     		
     		String text;
     		int i = 0 ;
-    		/*
-    		char[] Title = new char[255];
-    		
-    		for(int i=0; i<10; i++)
-			{
-				for(int j=0; j<255; j++)
-				{
-					Title[j] = (char) in.read();
-					if(Title[j] =='\n')
-					{
-						text = new String(Title,0,j);//나중에 j-1 할 수도 있음
-						WinBuffer[i] = text;
-				
-						break;	
-					}
-				}
-			 }*/
+    	
     		
     		while((text = in.readLine()) != null)
     		{
