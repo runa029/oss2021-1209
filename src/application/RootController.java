@@ -112,9 +112,19 @@ public class RootController implements Initializable{
 		dialogExit.show();
 	}
 	
-	public void handleBtnShareAction(ActionEvent e) {
-		//°øÀ¯ ÆË¾÷ ¶ç¿ì±â
+	public void handleBtnShareAction(ActionEvent e) throws Exception {
+		Stage dialogExit = new Stage(StageStyle.UTILITY);
+		dialogExit.initModality(Modality.WINDOW_MODAL);
+		dialogExit.initOwner(primaryStage);
+		dialogExit.setTitle("°øÀ¯");
+		
+		Parent parentHelp = FXMLLoader.load(getClass().getResource("Share_dialog.fxml"));
+		Scene scene = new Scene(parentHelp);
+		dialogExit.setScene(scene);
+		dialogExit.setResizable(false);
+		dialogExit.show();
 	}
+		//°øÀ¯ ÆË¾÷ ¶ç¿ì±â
 	
 	public void handleBtnExitAction(ActionEvent e) throws Exception {
 		Stage dialogExit = new Stage(StageStyle.UTILITY);
