@@ -13,8 +13,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -24,6 +26,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,14 +39,26 @@ public class RootController implements Initializable{
 	@FXML private Button btnShare;
 	@FXML private Button btnExit;
 	@FXML private Button btnOption;
-
+	@FXML private Button btnDefFol;
+	@FXML private Button btnSelFol1;
+	@FXML private Button btnSelFol2;
+	@FXML private Button btnSelFol3;
+	@FXML private Button btnSelFol4;
+	@FXML private Button btnSelFol5;
 	@FXML private TilePane imageList;
+	@FXML private Label defFolName;
+	@FXML private Label selFol1Name;
+	@FXML private Label selFol2Name;
+	@FXML private Label selFol3Name;
+	@FXML private Label selFol4Name;
+	@FXML private Label selFol5Name;
+	
+	File defFolPath;
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-    
 	btnHelp.setOnAction(new EventHandler<ActionEvent>() {
 		@Override
 		public void handle(ActionEvent event) {
@@ -69,6 +85,13 @@ public class RootController implements Initializable{
 			
 		}
 	});
+	 btnDefFol.setOnAction(event->{
+		 try {
+			 handleBtnDefFolAction(event);
+		 } catch (Exception e) {
+			 
+		 }
+	 });
 	}
 	
 	private Stage primaryStage;
@@ -147,11 +170,8 @@ public class RootController implements Initializable{
 		TextField selectLink3 = (TextField) parentOption.lookup("#selectLink3");
 		TextField selectLink4 = (TextField) parentOption.lookup("#selectLink4");
 		TextField selectLink5 = (TextField) parentOption.lookup("#selectLink5");
-		String folName1;
-		String folName2;
-		String folName3;
-		String folName4;
-		String folName5;
+		
+		
 		
 		btnProg1.setOnAction(event->{
 			FileChooser fileChooser = new FileChooser();
@@ -199,7 +219,6 @@ public class RootController implements Initializable{
 			DirectoryChooser directoryChooser = new DirectoryChooser();
 			File selLink1 = directoryChooser.showDialog(primaryStage);
 			String selLink1Dir = selLink1.getPath();
-			String selLink1Name = selLink1.getName();
 			selectLink1.setText(selLink1Dir);
 		});
 		btnLink2.setOnAction(event->{
@@ -238,21 +257,31 @@ public class RootController implements Initializable{
 		});
 		btnCanOp.setOnAction(event->dialogOption.close());
 		btnOkSa.setOnAction(event->{
-			if (selectProg1 != null) {
-				
-			}
+			if (selectLink1 != null) {
+				selFol1Name.textProperty().bind(selectProg1.textProperty());
+				}
 			if (selectLink2 != null) {
-				
+				selFol2Name.textProperty().bind(selectProg2.textProperty());
 			}
-			if (selectLink3 != null) {
-				
+			if (selectProg3 != null) {
+				selFol3Name.textProperty().bind(selectProg3.textProperty());
 			}
 			if (selectProg4 != null) {
-				
+				selFol4Name.textProperty().bind(selectProg4.textProperty());
 			}
 			if (selectProg5 != null) {
+				selFol5Name.textProperty().bind(selectProg5.textProperty());
+			}
+			if (defaultLink != null) {
 				
 			}
+			
+			selFol1Name.textProperty().unbind();
+			selFol2Name.textProperty().unbind();
+			selFol3Name.textProperty().unbind();
+			selFol4Name.textProperty().unbind();
+			selFol5Name.textProperty().unbind();
+			dialogOption.close();
 		});
 		btnCanSa.setOnAction(event->dialogOption.close());
 		
@@ -262,6 +291,58 @@ public class RootController implements Initializable{
 		dialogOption.show();
 	}
 	
+	public void handleBtnDefFolAction(ActionEvent e) {
+		if (defFolPath == null) {
+			DirectoryChooser directoryChooser = new DirectoryChooser();
+			final File defaultFolDir = directoryChooser.showDialog(primaryStage);
+			File[] imageFiles = defaultFolDir.listFiles(new ImageFileFilter());
+			
+			imageList.getChildren().clear();
+			
+			for(File file : imageFiles) {
+				try {
+					   ImageView imageView = new ImageView();
+					   imageView.setFitHeight(280);
+					   imageView.setFitWidth(180);
+					   imageView.setImage(new Image(new FileInputStream(file)));
+					   
+					   imageList.getChildren().add(imageView);
+				}catch (FileNotFoundException ex) {
+					ex.printStackTrace();
+				}
+			}
+		}
+		else {
+			final File defaultFolDir = defFolPath;
+			File[] imageFiles = defaultFolDir.listFiles(new ImageFileFilter());
+			
+            imageList.getChildren().clear();
+			
+			for(File file : imageFiles) {
+				try {
+					   ImageView imageView = new ImageView();
+					   imageView.setFitHeight(280);
+					   imageView.setFitWidth(180);
+					   imageView.setImage(new Image(new FileInputStream(file)));
+					   
+					   imageList.getChildren().add(imageView);
+				}catch (FileNotFoundException ex) {
+					ex.printStackTrace();
+				}
+		}
+	}
+  }
+}
 
-	
+class ImageFileFilter implements FileFilter{
+	private final String[] vaildFileExtension = new String[] {"jpg", "jpeg", "png", "gif"};
+	@Override
+	public boolean accept(File pathName) {
+		for (String extension : vaildFileExtension) {
+			if (pathName.getName().toLowerCase().endsWith(extension)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

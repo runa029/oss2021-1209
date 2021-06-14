@@ -41,6 +41,30 @@
                   </ImageView>
                </graphic></Button>
             <TilePane layoutX="222.0" layoutY="104.0" prefHeight="839.0" prefWidth="1122.0" />
+            <Button fx:id="btnDefFol" layoutX="14.0" layoutY="111.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: #000000;" textFill="WHITE">
+               <graphic>
+                  <Label fx:id="defFolName" prefHeight="37.0" prefWidth="104.0" textAlignment="CENTER" textFill="WHITE" />
+               </graphic></Button>
+            <Button fx:id="btnSelFol1" layoutX="14.0" layoutY="247.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: #000000;" textFill="WHITE">
+               <graphic>
+                  <Label fx:id="selFol1Name" prefHeight="37.0" prefWidth="107.0" textAlignment="CENTER" textFill="WHITE" />
+               </graphic></Button>
+            <Button fx:id="btnSelFol4" layoutX="14.0" layoutY="680.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: #000000;" textFill="WHITE">
+               <graphic>
+                  <Label fx:id="selFol4Name" prefHeight="42.0" prefWidth="110.0" textAlignment="CENTER" textFill="WHITE" />
+               </graphic></Button>
+            <Button fx:id="btnSelFol5" layoutX="14.0" layoutY="811.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: #000000;" textFill="WHITE">
+               <graphic>
+                  <Label fx:id="selFol5Name" prefHeight="46.0" prefWidth="114.0" textAlignment="CENTER" textFill="WHITE" />
+               </graphic></Button>
+            <Button fx:id="btnSelFol2" layoutX="14.0" layoutY="395.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: #000000;" textFill="WHITE">
+               <graphic>
+                  <Label fx:id="selFol2Name" prefHeight="40.0" prefWidth="109.0" textAlignment="CENTER" textFill="WHITE" />
+               </graphic></Button>
+            <Button fx:id="btnSelFol3" layoutX="14.0" layoutY="537.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="150.0" style="-fx-background-color: #000000;" textFill="WHITE">
+               <graphic>
+                  <Label fx:id="selFol3Name" prefHeight="44.0" prefWidth="108.0" textAlignment="CENTER" textFill="WHITE" />
+               </graphic></Button>
          </children></AnchorPane>
   </content>
 </ScrollPane>
